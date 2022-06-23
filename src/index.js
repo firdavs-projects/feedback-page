@@ -1,27 +1,29 @@
-import {createElement} from "./utils/utils";
-// styles
 import 'normalize.css/normalize.css';
 import './scss/base.scss';
-// components
-import {Header} from "./components/Header";
-import {Maps} from "./components/Maps";
-import {Feedback} from "./components/Feedback";
-import {Footer} from "./components/Footer";
+import {createElement} from "./utils";
+import {Header, Maps, Feedback, Footer} from "./components";
 
-const headElements = [
+const headers = [
+    createElement('title', {innerHTML: 'Feedback'}),
     createElement('link', {rel: 'shortcut icon', href: 'https://rs.school/favicon.ico'}),
+    createElement('meta', {name: 'viewport', content: 'width=device-width, initial-scale=1'}),
+    createElement('meta', {name: 'description', content: 'Contact form'}),
+    createElement('meta', {name: 'keywords', content: 'contact, feedback, form'}),
+    createElement('meta', {name: 'author', content: 'Firdavs Abdulloev'}),
+    createElement('meta', {name: 'og:title', content: 'Feedback'}),
+    createElement('meta', {name: 'og:description', content: 'Contact form'}),
+    createElement('meta', {name: 'og:image', content: 'https://rs.school/favicon.ico'}),
 ];
 
-const components = [
-    Header(),
-    Maps(),
-    Feedback(),
-    Footer(),
-];
+const root = createElement('div', {
+    id: 'root',
+    children: [
+        Header(),
+        Maps(),
+        Feedback(),
+        Footer(),
+    ]
+});
 
-const root = document.createElement('div');
-root.id = 'root';
-root.append(...components);
-
-document.head.append(...headElements);
-document.body.appendChild(root);
+document.head.append(...headers);
+document.body.append(root);

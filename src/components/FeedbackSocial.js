@@ -1,11 +1,11 @@
-import {createElement} from "../utils/utils";
+import {createElement} from "../utils";
 import infoIcon from "../assets/icons/info.svg";
 import fbIcon from "../assets/icons/fb.svg";
 import twIcon from "../assets/icons/tw.svg";
 import inIcon from "../assets/icons/in.svg";
 
 export const FeedbackSocial = () => {
-    const feedbackSocial = createElement('div', {class: 'feedback-social'});
+    const feedbackSocial = createElement('aside', {class: 'feedback-social'});
     const titleSocial = createElement('h2', {class: 'title', innerHTML: 'Contact information'});
     titleSocial.classList.add('social-title');
     const info = createElement('img', {src: infoIcon, alt: 'info', class: 'info'});

@@ -1,14 +1,15 @@
-import {createElement, isValidEmail} from "../utils/utils";
+import {createElement, isValidEmail} from "../utils";
 
-const LIMIT = 50;
+const LIMIT = 100;
 export const FeedbackForm = (children) => {
     const name = createElement(
         'input',
         {type: 'text', class: 'input', id: 'name', name: 'name', placeholder: 'John Doe'}
     );
+    const nameLabel = createElement('label', {for: 'name', innerHTML: 'Name', class: 'label'});
     const nameContainer = createElement('div', {
         class: 'input-container', children: [
-            createElement('label', {for: 'name', innerHTML: 'Name', class: 'label'}),
+            nameLabel,
             name
         ]
     });
@@ -17,9 +18,10 @@ export const FeedbackForm = (children) => {
         'input',
         {type: 'email', class: 'input', id: 'email', name: 'email', placeholder: 'john.doe@example.com'}
     );
+    const emailLabel = createElement('label', {for: 'email', innerHTML: 'Email', class: 'label'});
     const emailContainer = createElement('div', {
         class: 'input-container', children: [
-            createElement('label', {for: 'email', innerHTML: 'Email', class: 'label'}),
+            emailLabel,
             email
         ]
     });
@@ -39,6 +41,7 @@ export const FeedbackForm = (children) => {
             placeholder: 'Hi there! My name is John, I have a question about'
         }
     );
+    const messageLabel = createElement('label', {for: 'message', innerHTML: 'Message', class: 'label'});
     const messageLine = createElement(
         'span',
         {class: 'message-line', style: "width: 0px;"}
@@ -49,7 +52,7 @@ export const FeedbackForm = (children) => {
     );
     const messageContainer = createElement('div', {
         class: 'input-container', children: [
-            createElement('label', {for: 'message', innerHTML: 'Message', class: 'label'}),
+            messageLabel,
             message,
             messageLine,
             messageCounter
@@ -79,28 +82,28 @@ export const FeedbackForm = (children) => {
 
 
 const inputHandler = (e, input, [name, email, message]) => {
-    let messageLength = e.target.value.length;
+    let textLength = e.target.value.length;
     switch (input.id) {
         case 'name':
-            messageLength && name.classList.remove('error');
+            textLength && name.classList.remove('error');
             break;
 
         case 'email':
-            messageLength && email.classList.remove('error');
+            textLength && email.classList.remove('error');
             break;
 
         case 'message':
-            if (messageLength >= LIMIT) {
+            if (textLength >= LIMIT) {
                 message.value = message.value.slice(0, LIMIT);
-                messageLength = LIMIT;
+                textLength = LIMIT;
             }
-            if (messageLength < LIMIT) {
+            if (textLength < LIMIT) {
                 message.classList.remove('error');
             }
             const messageLine = message.parentElement.querySelector('.message-line');
             const messageCounter = message.parentElement.querySelector('.message-counter');
-            messageLine.style.width = `${messageLength * 2}%`;
-            messageCounter.innerHTML = `${messageLength}/${LIMIT}`;
+            messageLine.style.width = `${textLength}%`;
+            messageCounter.innerHTML = `${textLength}/${LIMIT}`;
             break;
 
         default:
@@ -113,6 +116,7 @@ const submitHandler = (e, feedbackForm, [name, email, message]) => {
     const formData = new FormData(feedbackForm);
     const data = {};
     let isValid = true;
+
     for (const [key, value] of formData.entries()) {
         switch (key) {
             case 'name':
@@ -124,6 +128,7 @@ const submitHandler = (e, feedbackForm, [name, email, message]) => {
                 data[key] = value;
                 name.classList.remove('error');
                 break;
+
             case 'email':
                 if (!isValidEmail(value)) {
                     email.classList.add('error');
@@ -133,6 +138,7 @@ const submitHandler = (e, feedbackForm, [name, email, message]) => {
                 data[key] = value;
                 email.classList.remove('error');
                 break;
+
             case 'message':
                 if (value.length < 2) {
                     message.classList.add('error');

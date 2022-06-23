@@ -1,8 +1,8 @@
 import ymaps from 'ymaps';
-import {createElement} from "../utils/utils";
+import {createElement} from "../utils";
 
 export const Maps = () => {
-    const maps = createElement('div', { class: 'maps', id: 'maps' });
+    const maps = createElement('section', { class: 'maps', id: 'maps' });
     ymaps
         .load()
         .then(maps => {

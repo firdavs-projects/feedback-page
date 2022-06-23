@@ -7,7 +7,6 @@ export const createElement = (tag, args) => {
                 return;
             }
             if (key === 'children') {
-                console.log(args[key], element);
                 if (Array.isArray(args[key])) {
                     element.append(...args[key]);
                 } else {
