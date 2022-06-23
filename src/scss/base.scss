@@ -1,0 +1,260 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-family: 'Open Sans', sans-serif;
+}
+.header {
+    background: #8787ed;
+    color: #fff;
+    padding: 20px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+#maps {
+    height: 480px;
+    overflow: hidden;
+}
+
+.ymaps-2-1-79-map-copyrights-promo,
+.ymaps-2-1-79-copyright__wrap {
+    display: none!important;
+}
+
+.feedback-section {
+    width: 800px;
+    min-height: 390px;
+    margin: -280px auto 0;
+    background: white;
+    position: relative;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+    font-size: 34px;
+    font-weight: bold;
+    margin: 20px 0;
+    text-transform: uppercase;
+    color: #8787ed;
+
+    &.social-title {
+        color: white;
+        font-size: 28px;
+        line-height: 1.5;
+        text-align: center;
+    }
+}
+
+.subtitle {
+    color: #222;
+    margin-bottom: 20px;
+
+    &.social-subtitle {
+        color: white;
+        font-size: 21px;
+        max-width: 100px;
+        text-align: center;
+    }
+}
+
+.feedback-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 70%;
+    padding: 30px 40px;
+}
+
+.feedback-social {
+    background: #8787ed;
+    padding: 30px 5px;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.fullname-container{
+    width: 100%;
+    display: flex;
+    flex: 1 1 auto;
+    justify-content: space-between;
+
+    .input-container {
+        &:first-child {
+            margin-right: 5px;
+        }
+        &:last-child {
+            margin-left: 5px;
+        }
+    }
+}
+
+.input {
+    width: 100%;
+    height: 40px;
+    border: 1px solid #ccc;
+    padding: 0 10px;
+    margin-bottom: 20px;
+
+    &:focus {
+        outline: none;
+    }
+    &:focus-visible {
+        border: 1px solid #8787ed;
+    }
+    &.error {
+        border: 1px solid red;
+    }
+}
+
+.label {
+    font-size: 13px;
+    color: #222;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.message-line {
+    display: block;
+    height: 3px;
+    background: #8787ed;
+    margin-top: -21px;
+    position: relative;
+    z-index: 100;
+}
+
+.message-counter {
+    display: block;
+    font-weight: bold;
+    font-size: 13px;
+    color: #8787ed;
+    text-align: end;
+}
+
+.input-container{
+    width: 100%;
+}
+
+.btn {
+    height: 40px;
+    border: 1px solid #ccc;
+    padding: 7px 25px;
+    border-radius: 20px;
+    background: white;
+    margin-left: 15px;
+    margin-top: 15px;
+
+    &:hover {
+        background: #8787ed;
+        cursor: pointer;
+        color: white;
+    }
+}
+
+.info {
+    width: 50px;
+    height: 50px;
+}
+
+.links-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    a{
+        border: 2px solid white;
+        border-radius: 50%;
+        padding: 10px;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 10px;
+    }
+}
+
+.thanks {
+    font-size: 34px;
+    font-weight: bold;
+    margin:0 20px;
+    text-transform: uppercase;
+    color: #8787ed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.footer{
+    display: flex;
+    justify-content: space-between;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 10px 20px;
+    font-size: 13px;
+    color: #222;
+}
+
+.author-link {
+    color: #8787ed;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 768px) {
+    .feedback-section {
+        width: calc(100% - 40px);
+    }
+    .thanks {
+        width: 100%;
+    }
+    .feedback-form {
+        width: 100%;
+    }
+    .feedback-social {
+        width: 100%;
+    }
+    .fullname-container{
+        flex-direction: column;
+        .input-container {
+            margin-left: 0!important;
+            margin-right: 0!important;
+        }
+    }
+}
+
+@media screen and (max-width: 578px) {
+    .feedback-section {
+        flex-direction: column;
+    }
+    .info {
+        margin-bottom: 15px;
+    }
+    .footer{
+        flex-direction: column;
+        align-items: center;
+    }
+    .developer {
+        margin-bottom: 5px;
+    }
+    .thanks {
+        min-height: 200px;
+        margin: 0;
+    }
+    .title.social-title {
+        max-width: 300px;
+    }
+}
