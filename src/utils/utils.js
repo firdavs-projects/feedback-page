@@ -1,10 +1,19 @@
-
 export const createElement = (tag, args) => {
     const element = document.createElement(tag);
     if (args) {
         Object.keys(args).forEach(key => {
             if (key === 'class') {
                 element.classList.add(args[key]);
+                return;
+            }
+            if (key === 'children') {
+                console.log(args[key], element);
+                if (Array.isArray(args[key])) {
+                    element.append(...args[key]);
+                } else {
+                    element.append(args[key]);
+                }
+                return;
             }
             element[key] = args[key];
         });
